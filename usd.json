@@ -1,0 +1,100 @@
+[
+    {
+        "name": "OpenUSD-24.03",
+        "source": "https://github.com/PixarAnimationStudios/OpenUSD/archive/refs/tags/v24.03.zip",
+        "variants": [
+            {
+                "id": "1cL_NqYdzAZkBHJEIg8_838ysnNbYwO3k",
+                "config": "Debug",
+                "msvc": [16, 11]
+            },
+            {
+                "id": "1MoNvFv7XztzsLPN_TbGrflmqDlXt7PSa",
+                "config": "Release",
+                "msvc": [16, 11]
+            },
+            {
+                "id": "1kLDVrlJ5lC-bx69KQD2-4JfTmS1qVSyU",
+                "config": "Release",
+                "python": [3, 9],
+                "msvc": [16, 11]
+            }
+        ]
+    },
+    {
+        "name": "OpenUSD-23.11",
+        "source": "https://github.com/PixarAnimationStudios/OpenUSD/archive/refs/tags/v23.11.zip",
+        "variants": [
+            {
+                "config": "Debug",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "python": [3, 9],
+                "msvc": [16, 11]
+            }
+        ]
+    },
+    {
+        "name": "OpenUSD-23.08",
+        "source": "https://github.com/PixarAnimationStudios/OpenUSD/archive/refs/tags/v23.08.zip",
+        "variants": [
+            {
+                "config": "Debug",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "python": [3, 9],
+                "msvc": [16, 11]
+            }
+        ]
+    },
+    {
+        "name": "OpenUSD-23.05",
+        "source": "https://github.com/PixarAnimationStudios/OpenUSD/archive/refs/tags/v23.05.zip",
+        "variants": [
+            {
+                "config": "Debug",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "python": [3, 9],
+                "msvc": [16, 11]
+            }
+        ]
+    },
+    {
+        "name": "OpenUSD-23.02",
+        "source": "https://github.com/PixarAnimationStudios/OpenUSD/archive/refs/tags/v23.02.zip",
+        "variants": [
+            {
+                "config": "Debug",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "msvc": [16, 11]
+            },
+            {
+                "config": "Release",
+                "python": [3, 9],
+                "msvc": [16, 11]
+            }
+        ]
+    }
+]
