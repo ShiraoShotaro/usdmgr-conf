@@ -1,0 +1,7 @@
+```
+python -m mgr --usd 2311 --python 39 --debug --release --pythonPath C:\Users\Shirao\AppData\Local\Programs\Python\Python39 test2
+```
+
+```
+python -m mgr --usd 2311 --python off --debug --release --pythonPath C:\Users\Shirao\AppData\Local\Programs\Python\Python39 test2
+```

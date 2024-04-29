@@ -32,27 +32,41 @@ def dirpath(path):
 
 
 def install(
+        outputDestination: str,
         usdVersion: str,
-        target: str,
-        option: str,
-        destDirPath: str,
-        openUsd: OpenUsdPath,
-        *,
-        python=None,
-        materialX=None):
+        pythonVersion: str,
+        pythonPath: str,
+        debug: bool,
+        release: bool):
     import os
     import jinja2
+    from mgr.utils import generatePath
 
-    cmakeRoot = os.path.join(f"usd-{usdVersion}", "cmake")
-    targetRoot = os.path.join(cmakeRoot, target, option)
+    from mgr.install import install, OpenUsdPath, Python
+    openUsd = OpenUsdPath()
+    openUsd.rootDir.release = generatePath(
+        outputDestination, usdVersion, pythonVersion, "release").replace("\\", "/") if release else None
+    openUsd.rootDir.debug = generatePath(
+        outputDestination, usdVersion, pythonVersion, "debug").replace("\\", "/") if debug else None
+    python = Python()
+    python.enabled = (pythonVersion is not None)
+    if python.enabled:
+        python.executable.debug = os.path.join(pythonPath, "python_d.exe").replace("\\", "/") if debug else None
+        python.executable.release = os.path.join(pythonPath, "python.exe").replace("\\", "/") if release else None
+        python.library.debug = os.path.join(pythonPath, "libs/python39_d.lib").replace("\\", "/") if debug else None
+        python.library.release = os.path.join(pythonPath, "libs/python39.lib").replace("\\", "/") if release else None
+
+    cmakeRoot = os.path.join("templates", f"usd-{usdVersion}", "cmake")
+    targetRoot = os.path.join(cmakeRoot, f"py{pythonVersion}" if pythonVersion else "_")
 
     j2env = jinja2.Environment(loader=jinja2.FileSystemLoader([cmakeRoot, targetRoot]))
     j2env.filters["dirpath"] = dirpath
 
     args = dict(
         openUsd=openUsd,
-        python=python if python else Python(),
-        materialX=materialX if materialX else MaterialX(),
+        python=python,
+        # materialX=materialX if materialX else MaterialX(),
+        materialX=MaterialX(),
     )
     files = ["openusdConfig.cmake"]
 
@@ -62,7 +76,7 @@ def install(
     for file in files:
         template = j2env.get_template(file)
         output = template.render(**args)
-        with open(os.path.join(destDirPath, file), mode="w") as fp:
+        with open(os.path.join(generatePath(outputDestination, usdVersion, pythonVersion, None), file), mode="w") as fp:
             fp.write(output)
 
 

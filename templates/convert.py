@@ -74,10 +74,10 @@ def convert(releaseRoot: str, debugRoot: str, dst: str):
 
 
 if __name__ == "__main__":
-    convert("S:/dist/pxr/OpenUSD-23.11/install/usd",
-            "S:/dist/pxr/OpenUSD-23.11/install/usd_d",
-            "usd-2311/cmake/win64/_")
-
-    convert("S:/dist/pxr/OpenUSD-23.11/install/python39",
-            "S:/dist/pxr/OpenUSD-23.11/install/python39_d",
-            "usd-2311/cmake/win64/py39")
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("pathToRelease", type=str)
+    parser.add_argument("pathToDebug", type=str)
+    parser.add_argument("destination", type=str)
+    args = parser.parse_args()
+    convert(args.pathToRelease, args.pathToDebug, args.destination)
